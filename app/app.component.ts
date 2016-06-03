@@ -5,7 +5,7 @@ import { Component } from 'angular2/core';
   template: `
     <div class="container">
       <h1>Calorie Counter</h1>
-      <div *ngFor="#food of foods">
+      <div *ngFor="#food of foods" (click)="foodWasSelected(food)">
         <h3>{{ food.name }}</h3>
         <h4>{{ food.details }}</h4>
         <h4>{{ food.calories }} calories</h4>
@@ -14,7 +14,7 @@ import { Component } from 'angular2/core';
   `
 })
 export class AppComponent {
-  public foods: Food[];  // Task[] (or Array<Task>) identifies tasks as an array of Task objects
+  public foods: Food[];
   constructor(){
     this.foods = [
       new Food("Strawberry Cream Pie", "Yum, pie for breakfast!", 405, 0),
@@ -22,6 +22,9 @@ export class AppComponent {
       new Food("Grilled Cheese Sandwich", "Cheddar on wheat", 350, 2),
       new Food("Tomato Soup", "Cup, very delicious, little cheese on top", 280, 3)
     ];
+  }
+  foodWasSelected(clickedFood: Food): void{
+    console.log(clickedFood);
   }
 }
 export class Food {
