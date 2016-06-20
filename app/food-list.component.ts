@@ -17,6 +17,7 @@ import { NewFoodComponent } from './new-food.component';
   </food-display>
   <edit-food-details *ngIf="selectedFood" [food]="selectedFood">
   </edit-food-details>
+  <br>
   <new-food (onSubmitNewFood)="createFood($event)"></new-food>
   `
 })
@@ -32,9 +33,9 @@ export class FoodListComponent {
     this.selectedFood = clickedFood;
     this.onFoodSelect.emit(clickedFood);
   }
-  createFood(name: string, details: string, calories: number): void {
-  this.foodList.push(
-    new Food(name, details, calories, this.foodList.length)
-  );
-}
+  createFood(food: Food): void {
+    this.foodList.push(
+      new Food(food.name, food.details, food.calories, this.foodList.length)
+    );
+  }
 }
