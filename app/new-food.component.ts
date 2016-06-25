@@ -30,11 +30,11 @@ export class NewFoodComponent{
   addFood(foodName: HTMLInputElement,
           foodDetails: HTMLInputElement,
           foodCals: HTMLInputElement){
-    // debugger;
-    console.log('hey look!');
     this.onSubmitNewFood.emit({name: foodName.value,
                                details: foodDetails.value,
-                               calories: parseInt(foodCals.value)});
+                               calories: parseInt(foodCals.value),
+                               id: 0,
+                               isHealthy: false});
     foodName.value = "";
     foodDetails.value = "";
     foodCals.value = "";
